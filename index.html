@@ -9,76 +9,101 @@
         padding: 0;
         background: rgb(25, 25, 25); /* Notion dark mode */
         font-family: "JetBrains Mono", monospace;
+
+        /* The banner should hug the top with margin */
         display: flex;
         justify-content: center;
-        align-items: center;
-        height: 100vh;
+        padding: 16px;
       }
 
-      /* -------- FUTURE-LUXURY PANEL -------- */
+      /* OUTER WRAPPER (flex + auto scaling) */
+      .banner-wrapper {
+        width: 100%;
+        max-width: 1100px; /* prevent absurd widescreen stretching */
+      }
+
+      /* -------- FUTURE-LUXURY THIN BANNER -------- */
       .panel {
-        padding: 30px 50px;
-        border-radius: 16px;
+        width: 100%;
+        padding: 14px 28px;
+        border-radius: 12px;
 
-        /* Smoky warm glass */
+        /* Slim glass look */
         background: rgba(255, 240, 200, 0.03);
-        backdrop-filter: blur(12px);
+        backdrop-filter: blur(10px);
 
-        /* Brushed champagne-gold border */
+        /* Thin gold edge */
         border: 1px solid rgba(255, 220, 150, 0.45);
 
-        /* Soft inner + outer metallic glow */
+        /* Very soft outer glow */
         box-shadow:
-          0 0 22px rgba(255, 215, 150, 0.08),
-          inset 0 0 18px rgba(255, 245, 220, 0.04);
-        
+          0 0 16px rgba(255, 215, 150, 0.06),
+          inset 0 0 12px rgba(255, 245, 220, 0.03);
+
         position: relative;
+
+        /* Make text scale with width */
+        box-sizing: border-box;
       }
 
-      /* Metallic gradient sheen */
+      /* Gold → platinum sheen */
       .panel::before {
         content: "";
         position: absolute;
         inset: 0;
-        border-radius: 16px;
+        border-radius: 12px;
         pointer-events: none;
-
-        /* Soft gold → platinum diagonal sheen */
         background: linear-gradient(
           135deg,
-          rgba(255, 225, 160, 0.28),
-          rgba(200, 200, 205, 0.10)
+          rgba(255, 225, 160, 0.22),
+          rgba(200, 200, 205, 0.08)
         );
-
         mix-blend-mode: screen;
       }
 
+      /* -------- TEXT STYLING -------- */
+
+      /* Scales with width but stays elegant */
       #gst {
-        font-size: 2.5rem;
+        font-size: clamp(1rem, 4vw, 1.9rem);
         color: #f4e7c6; /* champagne gold */
         letter-spacing: 2px;
 
         text-shadow:
           0 0 4px rgba(255, 230, 180, 0.18),
-          0 0 16px rgba(255, 210, 150, 0.08);
+          0 0 12px rgba(255, 210, 150, 0.08);
       }
 
       .label {
         text-transform: uppercase;
-        color: rgba(240, 225, 190, 0.55);
-        font-size: 0.75rem;
-        letter-spacing: 4px;
-        margin-bottom: 10px;
 
-        text-shadow: 0 0 6px rgba(255, 240, 200, 0.15);
+        /* Smaller, responsive */
+        font-size: clamp(0.45rem, 1.5vw, 0.7rem);
+
+        color: rgba(240, 225, 190, 0.55);
+        letter-spacing: 4px;
+        margin-bottom: 4px;
+
+        text-shadow: 0 0 4px rgba(255, 240, 200, 0.15);
       }
+
+      /* Force the panel to stay THIN */
+      .panel-content {
+        display: flex;
+        flex-direction: column;
+      }
+
     </style>
   </head>
 
   <body>
-    <div class="panel">
-      <div class="label">Galactic Standard Time</div>
-      <div id="gst">Loading…</div>
+    <div class="banner-wrapper">
+      <div class="panel">
+        <div class="panel-content">
+          <div class="label">Galactic Standard Time</div>
+          <div id="gst">Loading…</div>
+        </div>
+      </div>
     </div>
 
     <script>
@@ -93,10 +118,10 @@
         const hh = String(d.getHours()).padStart(2, "0");
         const mm = String(d.getMinutes()).padStart(2, "0");
         const ss = String(d.getSeconds()).padStart(2, "0");
-        const ms = String(d.getMilliseconds()).padStart(3, "0"); // ← restored
+        const ms = String(d.getMilliseconds()).padStart(3, "0");
 
         document.getElementById("gst").textContent =
-          `${baseYear}:${day}:${hh}:${mm}:${ss}:${ms}`;  // ← appended
+          `${baseYear}:${day}:${hh}:${mm}:${ss}:${ms}`;
       }
 
       setInterval(updateGST, 250);
