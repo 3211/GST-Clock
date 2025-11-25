@@ -7,7 +7,7 @@
       body {
         margin: 0;
         padding: 0;
-        background: rgb(25, 25, 25); /* Matches Notion dark mode */
+        background: rgb(25, 25, 25); /* Notion dark mode */
         font-family: "JetBrains Mono", monospace;
         display: flex;
         justify-content: center;
@@ -15,53 +15,67 @@
         height: 100vh;
       }
 
+      /* -------- FUTURE-LUXURY PANEL -------- */
       .panel {
-        padding: 28px 48px;
-        border-radius: 14px;
+        padding: 30px 50px;
+        border-radius: 16px;
 
-        /* Soft glass */
-        background: rgba(255, 255, 255, 0.04);
-        backdrop-filter: blur(10px);
+        /* Smoky warm glass */
+        background: rgba(255, 240, 200, 0.03);
+        backdrop-filter: blur(12px);
 
-        /* Muted luxury gold + silver edge */
-        border: 1px solid rgba(255, 215, 130, 0.34);
+        /* Brushed champagne-gold border */
+        border: 1px solid rgba(255, 220, 150, 0.45);
+
+        /* Soft inner + outer metallic glow */
         box-shadow:
-          0 0 18px rgba(255, 215, 130, 0.08),
-          inset 0 0 25px rgba(255, 255, 255, 0.03);
-
-        /* Subtle metallic gradient edge */
+          0 0 22px rgba(255, 215, 150, 0.08),
+          inset 0 0 18px rgba(255, 245, 220, 0.04);
+        
         position: relative;
       }
 
+      /* Metallic gradient sheen */
       .panel::before {
         content: "";
         position: absolute;
         inset: 0;
-        border-radius: 14px;
+        border-radius: 16px;
         pointer-events: none;
+
+        /* Soft gold → platinum diagonal sheen */
         background: linear-gradient(
           135deg,
-          rgba(255, 220, 165, 0.18),
-          rgba(200, 200, 210, 0.06)
+          rgba(255, 225, 160, 0.28),
+          rgba(200, 200, 205, 0.10)
         );
-        mix-blend-mode: overlay;
+
+        mix-blend-mode: screen;
       }
 
+      /* -------- TEXT STYLING -------- */
+
+      /* Premium champagne-gold */
       #gst {
-        font-size: 2.4rem;
-        color: #f5e9c9; /* warm muted gold */
+        font-size: 2.5rem;
+        color: #f4e7c6; /* champagne gold */
         letter-spacing: 2px;
-        text-shadow: 
-          0 0 4px rgba(255, 236, 180, 0.25),
-          0 0 12px rgba(200, 180, 120, 0.08);
+
+        /* Warm golden aura instead of neon glow */
+        text-shadow:
+          0 0 4px rgba(255, 230, 180, 0.18),
+          0 0 16px rgba(255, 210, 150, 0.08);
       }
 
+      /* Label: platinum-gold hybrid */
       .label {
         text-transform: uppercase;
-        color: rgba(245, 233, 201, 0.45);
+        color: rgba(240, 225, 190, 0.55);
         font-size: 0.75rem;
         letter-spacing: 4px;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
+
+        text-shadow: 0 0 6px rgba(255, 240, 200, 0.15);
       }
     </style>
   </head>
