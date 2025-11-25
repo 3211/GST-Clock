@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Galactic Standard Time</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #0b0b0c; /* deep sci-fi black */
+        font-family: "JetBrains Mono", monospace;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .panel {
+        padding: 25px 40px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(0, 255, 170, 0.25);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 0 30px rgba(0, 255, 170, 0.08);
+      }
+
+      #gst {
+        font-size: 2.2rem;
+        color: #00ffbf;
+        letter-spacing: 2px;
+        text-shadow: 0 0 8px #00ffbf;
+      }
+
+      .label {
+        text-transform: uppercase;
+        color: #00ffbf88;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        margin-bottom: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <div class="label">Galactic Standard Time</div>
+      <div id="gst">Loading…</div>
+    </div>
+
+    <script>
+      function updateGST() {
+        const d = new Date();
+        const year = d.getFullYear();
+        const day = String(
+          Math.floor((d - new Date(year, 0, 0)) / 86400000)
+        ).padStart(3, "0");
+        const hh = String(d.getHours()).padStart(2, "0");
+        const mm = String(d.getMinutes()).padStart(2, "0");
+        const ss = String(d.getSeconds()).padStart(2, "0");
+        const ms = String(d.getMilliseconds()).padStart(3, "0");
+
+        document.getElementById(
+          "gst"
+        ).textContent = `${year}:${day}:${hh}:${mm}:${ss}:${ms}`;
+      }
+
+      setInterval(updateGST, 251);
+      updateGST();
+    </script>
+  </body>
+</html>
