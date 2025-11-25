@@ -1,3 +1,17 @@
 h1 {
   text-decoration: underline;
 }
+/* Let the panel shrink on small screens */
+.panel {
+  max-width: 90vw;
+  box-sizing: border-box;
+}
+
+/* Responsive font sizes */
+#gst {
+  font-size: clamp(1.2rem, 6vw, 2.5rem);
+}
+
+.label {
+  font-size: clamp(0.5rem, 2.5vw, 0.75rem);
+}
