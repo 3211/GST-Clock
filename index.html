@@ -53,21 +53,16 @@
         mix-blend-mode: screen;
       }
 
-      /* -------- TEXT STYLING -------- */
-
-      /* Premium champagne-gold */
       #gst {
         font-size: 2.5rem;
         color: #f4e7c6; /* champagne gold */
         letter-spacing: 2px;
 
-        /* Warm golden aura instead of neon glow */
         text-shadow:
           0 0 4px rgba(255, 230, 180, 0.18),
           0 0 16px rgba(255, 210, 150, 0.08);
       }
 
-      /* Label: platinum-gold hybrid */
       .label {
         text-transform: uppercase;
         color: rgba(240, 225, 190, 0.55);
@@ -98,9 +93,10 @@
         const hh = String(d.getHours()).padStart(2, "0");
         const mm = String(d.getMinutes()).padStart(2, "0");
         const ss = String(d.getSeconds()).padStart(2, "0");
+        const ms = String(d.getMilliseconds()).padStart(3, "0"); // ← restored
 
         document.getElementById("gst").textContent =
-          `${baseYear}:${day}:${hh}:${mm}:${ss}`;
+          `${baseYear}:${day}:${hh}:${mm}:${ss}:${ms}`;  // ← appended
       }
 
       setInterval(updateGST, 250);
