@@ -121,10 +121,10 @@
         const ms = String(d.getMilliseconds()).padStart(3, "0");
 
         document.getElementById("gst").textContent =
-          `${baseYear}:${day}:${hh}:${mm}:${ss}:${ms}`;
+          `${baseYear}:${day}:${hh}:${mm}:${ss}`;
       }
 
-      setInterval(updateGST, 250);
+      setInterval(updateGST, 1100);
       updateGST();
     </script>
   </body>
